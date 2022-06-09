@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container, .headerContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+#rock, 
+#paper, 
+#scissors {
+    padding: 15px 30px;
+    box-shadow: 2px 2px black;
+    text-shadow: 1px 1px lightgray;
+}
+
+#rock {
+    background-color: burlywood;
+}
+
+#paper {
+    background-color: white;
+
+}
+
+#scissors {
+    background-color: lightblue;
+}
+
+.topBar {
+    background-color: gainsboro;
+    height: 150px;
+    margin-bottom: -150px;
+}

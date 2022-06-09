@@ -1,1 +1,1 @@
-A simple rock-paper-scissors game in JavaScript.
+A simple rock-paper-scissors game in JavaScript, now with a UI!
