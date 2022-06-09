@@ -34,7 +34,7 @@ function playRound(playerChoice) {
     } else if ((playerChoice === 'rock' && cpuChoice === 'rock') || 
                (playerChoice === 'paper' && cpuChoice === 'paper') || 
                (playerChoice === 'scissors' && cpuChoice === 'scissors')) {
-        outcome = `You chose ${playerChoice} and your opponent chose ${cpuChoice}. You tied, go again!`;
+        outcome = `You chose ${playerChoice} and your opponent chose ${cpuChoice}. You tied.`;
     }
     if (gameOver === false) showResult(outcome);
     checkStatus();
@@ -44,28 +44,34 @@ function showResult(outcome) {
     const result = document.createElement("p");
     result.classList.add('resultsMessage');
     result.textContent = outcome;
-    const showResults = document.querySelector(".results");
+    const showResults = document.querySelector(".resultsWrapper");
     showResults.insertBefore(result, showResults.firstChild);
     const lastResult = showResults.lastElementChild.classList.contains("resultsMessage");
-    if (showResults.childElementCount > 4) {
+    if (showResults.childElementCount > 5) {
         showResults.removeChild(showResults.lastChild);
     }
     score.textContent = `Wins: ${wins} Losses: ${losses}`;
 }
 
 function checkStatus() {
-    const showResults = document.querySelector(".results");
+    const showResults = document.querySelector(".resultsWrapper");
     const result = document.createElement("p");
     result.classList.add('resultsMessage');
     if (rounds>=5 && gameOver === false) {
         if (wins>losses) {
             result.textContent = "You won!";
             showResults.insertBefore(result, showResults.firstChild);
+            if (showResults.childElementCount > 5) {
+                showResults.removeChild(showResults.lastChild);
+            }
             gameOver = true;
             setTimeout(gameReset, 5000);
         } else if (losses>wins) {
             result.textContent = "You lost!";
             showResults.insertBefore(result, showResults.firstChild);
+            if (showResults.childElementCount > 5) {
+                showResults.removeChild(showResults.lastChild);
+            }
             gameOver = true;
             setTimeout(gameReset, 2000);
         }
@@ -78,7 +84,7 @@ function gameReset() {
     rounds = 0;
     score.textContent = `Wins: ${wins} Losses: ${losses}`
     gameOver = false;
-    const showResults = document.querySelector(".results");
+    const showResults = document.querySelector(".resultsWrapper");
     removeAllChildNodes(showResults);
 }
 
