@@ -77,6 +77,7 @@ function gameReset() {
     losses = 0;
     rounds = 0;
     score.textContent = `Wins: ${wins} Losses: ${losses}`
+    gameOver = false;
     const showResults = document.querySelector(".results");
     removeAllChildNodes(showResults);
 }
